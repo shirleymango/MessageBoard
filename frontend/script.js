@@ -1,51 +1,54 @@
 document.getElementById('sendButton').addEventListener('click', sendMessage);
 
-function sendMessage() {
+async function fetchMessages() {
+    const response = await fetch('http://localhost:8080/messages');
+    const data = await response.json();
+
+    const messagesContainer = document.getElementById('messages');
+    messagesContainer.innerHTML = '';
+
+    data.forEach((message) => {
+        const messageElement = document.createElement('div');
+        messageElement.className = message.sender === 'You' ? 'message right' : 'message left';
+
+        const avatar = document.createElement('img');
+        avatar.src = message.avatar;
+        avatar.className = 'avatar';
+
+        const text = document.createElement('div');
+        text.className = 'text';
+        text.textContent = `[${message.timestamp}] ${message.sender}: ${message.text}`;
+
+        messageElement.appendChild(avatar);
+        messageElement.appendChild(text);
+        messagesContainer.appendChild(messageElement);
+    });
+}
+
+async function sendMessage() {
     const input = document.getElementById('messageInput');
     const messageText = input.value.trim();
 
     if (messageText === '') return;
 
-    // Create message element
-    const messageElement = document.createElement('div');
-    messageElement.className = 'message right'; // Assume it's your message for now
+    const message = {
+        id: Date.now(),
+        sender: 'You',
+        avatar: 'https://path-to-your-avatar.png',
+        timestamp: new Date().toLocaleTimeString(),
+        text: messageText
+    };
 
-    const avatar = document.createElement('img');
-    avatar.src = 'https://path-to-your-avatar.png'; // Replace with avatar image URL
-    avatar.className = 'avatar';
+    await fetch('http://localhost:8080/messages', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(message)
+    });
 
-    const text = document.createElement('div');
-    text.className = 'text';
-    text.textContent = messageText;
-
-    messageElement.appendChild(avatar);
-    messageElement.appendChild(text);
-
-    // Append message to chat
-    document.getElementById('messages').appendChild(messageElement);
-
-    // Clear input
+    fetchMessages();
     input.value = '';
-
-    // Simulate receiving a message
-    setTimeout(receiveMessage, 1000);
 }
 
-function receiveMessage() {
-    const messageElement = document.createElement('div');
-    messageElement.className = 'message left';
-
-    const avatar = document.createElement('img');
-    avatar.src = 'https://path-to-other-avatar.png'; // Replace with avatar image URL
-    avatar.className = 'avatar';
-
-    const text = document.createElement('div');
-    text.className = 'text';
-    text.textContent = "This is a reply message.";
-
-    messageElement.appendChild(avatar);
-    messageElement.appendChild(text);
-
-    // Append message to chat
-    document.getElementById('messages').appendChild(messageElement);
-}
+window.onload = fetchMessages;
