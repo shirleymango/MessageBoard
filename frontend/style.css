@@ -1,0 +1,108 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    background-image: url('https://path-to-your-pink-bow-image.png'); /* Replace with your bow image URL */
+    background-repeat: repeat;
+    background-size: 50px; /* Adjust size as needed */
+}
+
+/* Chat room container */
+.chat-room {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Chat header */
+.chat-header {
+    margin-bottom: 10px;
+}
+
+.chat-header h1 {
+    font-size: 24px;
+    color: #FF69B4; /* Pink color */
+}
+
+/* Chat container */
+.chat-container {
+    width: 80%;
+    max-width: 600px;
+    height: 70%;
+    background-color: #FFD6E7; /* Light pink background */
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Messages */
+.messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Individual message styles */
+.message {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 75%;
+}
+
+.message.left {
+    background-color: #FFF;
+    align-self: flex-start;
+}
+
+.message.right {
+    background-color: #FFB6C1;
+    align-self: flex-end;
+}
+
+/* Avatar */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Message text */
+.text {
+    flex: 1;
+}
+
+/* Chat input */
+.chat-input {
+    display: flex;
+    margin-top: 10px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px 0 0 8px;
+}
+
+.chat-input button {
+    padding: 10px;
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #FF1493;
+}
