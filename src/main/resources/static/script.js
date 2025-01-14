@@ -10,9 +10,15 @@ async function fetchMessages() {
 
         messagesContainer.innerHTML = ""; // Clear the container
 
+        data.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)); // Ensure chronological order
+
+        // Get the current logged-in user
+        const userResponse = await fetch("/current-user");
+        const userData = await userResponse.json();
+
         data.forEach((message) => {
             const messageElement = document.createElement("div");
-            messageElement.className = message.sender === "You" ? "message right" : "message left";
+            messageElement.className = message.sender === userData.username ? "message right" : "message left";
 
             const text = document.createElement("div");
             text.className = "text";
@@ -21,6 +27,8 @@ async function fetchMessages() {
             messageElement.appendChild(text);
             messagesContainer.appendChild(messageElement);
         });
+
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
     } catch (error) {
         console.error("Error fetching messages:", error);
     }
@@ -42,10 +50,8 @@ async function sendMessage() {
         }
 
         const message = {
-            id: Date.now(),
-            sender: userData.username,
             text: messageText,
-            timestamp: new Date().toLocaleTimeString(),
+            timestamp: new Date().toISOString(),
         };
 
         // Send the message to the backend
