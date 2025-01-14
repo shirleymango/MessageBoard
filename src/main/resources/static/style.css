@@ -20,6 +20,7 @@ body {
 
 .chat-header {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .chat-header h1 {
@@ -43,24 +44,29 @@ body {
 
 /* Chat input area */
 .chat-input {
-    display: flex;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Align content vertically */
     margin-top: 10px;
+    margin: 0 auto; /* Center the container horizontally within its parent */
     width: 80%;
     max-width: 600px;
 }
 
+/* Style for input field */
 .chat-input input {
-    flex: 1;
+    flex: 1; /* Allow input to take remaining space */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px 0 0 8px;
 }
 
+/* Style for button */
 .chat-input button {
     padding: 10px;
+    border: none;
     background-color: #FF69B4;
     color: white;
-    border: none;
     border-radius: 0 8px 8px 0;
     cursor: pointer;
 }
