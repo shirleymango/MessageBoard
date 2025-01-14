@@ -81,7 +81,6 @@ fun Application.configureRouting() {
             val messageList = transaction {
                 Messages.selectAll().map {
                     Message(
-                        id = it[Messages.id],
                         sender = it[Messages.sender],
                         text = it[Messages.text],
                         timestamp = it[Messages.timestamp]
