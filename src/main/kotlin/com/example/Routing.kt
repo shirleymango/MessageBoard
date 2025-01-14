@@ -91,6 +91,15 @@ fun Application.configureRouting() {
             call.respond(messageList)
         }
 
+        get("/debug/users") {
+            val users = transaction {
+                Users.selectAll().map {
+                    "Username: ${it[Users.username]}, Password Hash: ${it[Users.password]}"
+                }
+            }
+            call.respond(users)
+        }
+
         // Post a new message
         post("/messages") {
             val session = call.sessions.get<ChatSession>()
