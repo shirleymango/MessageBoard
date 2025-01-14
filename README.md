@@ -2,11 +2,11 @@
 
 This website allows users to send messages in a chat room. Here are the three main tabs:
 
-**Login Page** - where a user enters their username and password
+**1) Login Page** - where a user enters their username and password
 
-**Registration Page** - where a new user signs up
+**2) Registration Page** - where a new user signs up
 
-**Chat Room** - where the user can send messages and see all previously sent messages
+**3) Chat Room** - where the user can send messages and see all previously sent messages
 
 ![chat room](https://github.com/user-attachments/assets/f095f673-29f1-494c-a635-cc9d0740be9c)
 
@@ -19,13 +19,6 @@ https://github.com/user-attachments/assets/5d268ead-17ae-457d-91f9-04d59809600c
 
 
 This project was created using the [Ktor Project Generator](https://start.ktor.io).
-
-Here are some useful links to get you started:
-
-- [Ktor Documentation](https://ktor.io/docs/home.html)
-- [Ktor GitHub page](https://github.com/ktorio/ktor)
-- The [Ktor Slack chat](https://app.slack.com/client/T09229ZC6/C0A974TJ9). You'll need
-  to [request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) to join.
 
 ## Features
 
