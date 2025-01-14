@@ -1,8 +1,11 @@
 # MessageBoard
 
 This website allows users to send messages in a chat room. Here are the three main tabs:
+
 **Login Page** - where a user enters their username and password
+
 **Registration Page** - where a new user signs up
+
 **Chat Room** - where the user can send messages and see all previously sent messages
 
 ![chat room](https://github.com/user-attachments/assets/f095f673-29f1-494c-a635-cc9d0740be9c)
