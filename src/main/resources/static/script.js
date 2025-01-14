@@ -2,48 +2,54 @@ const messageInput = document.getElementById("messageInput");
 const sendButton = document.getElementById("sendButton");
 const messagesContainer = document.getElementById("messages");
 
-// Function to display messages on the UI
-function displayMessages(messages) {
-    messagesContainer.innerHTML = ""; // Clear the container
-    messages.forEach((message) => {
-        const messageElement = document.createElement("div");
-        messageElement.className = "message right";
-
-        const text = document.createElement("div");
-        text.className = "text";
-        text.textContent = `[${message.timestamp}] ${message.sender}: ${message.text}`;
-
-        messageElement.appendChild(text);
-        messagesContainer.appendChild(messageElement);
-    });
-}
-
-// Function to fetch and display messages
+// Fetch and display messages from the backend
 async function fetchMessages() {
     try {
-        const response = await fetch("/messages"); // Fetch messages from the backend
-        const data = await response.json(); // Parse JSON
-        displayMessages(data); // Update the UI
+        const response = await fetch("/messages");
+        const data = await response.json();
+
+        messagesContainer.innerHTML = ""; // Clear the container
+
+        data.forEach((message) => {
+            const messageElement = document.createElement("div");
+            messageElement.className = message.sender === "You" ? "message right" : "message left";
+
+            const text = document.createElement("div");
+            text.className = "text";
+            text.textContent = `[${message.timestamp}] ${message.sender}: ${message.text}`;
+
+            messageElement.appendChild(text);
+            messagesContainer.appendChild(messageElement);
+        });
     } catch (error) {
         console.error("Error fetching messages:", error);
     }
 }
 
-// Function to send a new message
+// Send a new message to the backend
 async function sendMessage() {
     const messageText = messageInput.value.trim();
     if (!messageText) return;
 
-    const message = {
-        id: Date.now(), // Unique ID
-        sender: "You", // Sender name
-        text: messageText,
-        timestamp: new Date().toLocaleTimeString(), // Current time
-    };
-
     try {
+        // Get the current logged-in user
+        const userResponse = await fetch("/current-user");
+        const userData = await userResponse.json();
+
+        if (!userData.username) {
+            alert("You are not logged in!");
+            return;
+        }
+
+        const message = {
+            id: Date.now(),
+            sender: userData.username,
+            text: messageText,
+            timestamp: new Date().toLocaleTimeString(),
+        };
+
         // Send the message to the backend
-        await fetch("/messages", {
+        const response = await fetch("/messages", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -51,16 +57,20 @@ async function sendMessage() {
             body: JSON.stringify(message),
         });
 
-        // Clear the input and refresh messages
-        messageInput.value = "";
-        fetchMessages();
+        const result = await response.json();
+        if (result.error) {
+            alert(result.error);
+        } else {
+            messageInput.value = ""; // Clear input field
+            fetchMessages(); // Refresh messages
+        }
     } catch (error) {
         console.error("Error sending message:", error);
     }
 }
 
-// Attach event listener to the send button
+// Add event listener to send button
 sendButton.addEventListener("click", sendMessage);
 
-// Fetch messages on page load
+// Fetch messages when the page loads
 window.onload = fetchMessages;

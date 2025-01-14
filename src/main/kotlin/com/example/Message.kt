@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Message(
-    val id: Long, // Changed from Int to Long
-    val sender: String,
+    val id: Long,
+    val sender: String? = null,
     val text: String,
     val timestamp: String
 )

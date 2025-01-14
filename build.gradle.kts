@@ -22,6 +22,11 @@ repositories {
 }
 
 dependencies {
+    implementation("org.jetbrains.exposed:exposed-core:0.41.1") // Exposed Core
+    implementation("org.jetbrains.exposed:exposed-dao:0.41.1") // Exposed DAO
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.41.1") // Exposed JDBC
+    implementation("org.xerial:sqlite-jdbc:3.40.1.0") // SQLite JDBC Driver
+    implementation("org.mindrot:jbcrypt:0.4") // BCrypt for password hashing
     implementation("io.ktor:ktor-server-call-logging-jvm:3.0.3")
     implementation("io.ktor:ktor-server-core-jvm:3.0.3")
     implementation("io.ktor:ktor-server-auth-jvm:3.0.3")

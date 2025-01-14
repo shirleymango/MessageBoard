@@ -1,3 +1,4 @@
+/* General body styling */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -7,7 +8,8 @@ body {
     background-size: 50px;
 }
 
-.chat-room {
+/* Chat room container */
+.chat-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +27,8 @@ body {
     color: #FF69B4;
 }
 
-.chat-container {
+/* Chat message area */
+.messages {
     width: 80%;
     max-width: 600px;
     height: 70%;
@@ -33,43 +36,12 @@ body {
     border-radius: 10px;
     padding: 20px;
     overflow-y: auto;
-}
-
-.messages {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.message {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 75%;
-}
-
-.message.left {
-    background-color: #FFF;
-    align-self: flex-start;
-}
-
-.message.right {
-    background-color: #FFB6C1;
-    align-self: flex-end;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.text {
-    flex: 1;
-}
-
+/* Chat input area */
 .chat-input {
     display: flex;
     margin-top: 10px;
@@ -95,4 +67,97 @@ body {
 
 .chat-input button:hover {
     background-color: #FF1493;
+}
+
+/* Message styling */
+.message {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 75%;
+}
+
+/* Messages from other users */
+.message.left {
+    background-color: #FFF;
+    align-self: flex-start;
+}
+
+/* Messages from the logged-in user */
+.message.right {
+    background-color: #FFB6C1;
+    align-self: flex-end;
+}
+
+/* Text inside the message */
+.text {
+    word-wrap: break-word;
+}
+
+/* Login container */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #FFD6E7;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Login header */
+.login-container h1 {
+    color: #FF69B4;
+    margin-bottom: 20px;
+}
+
+/* Login form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-form button {
+    padding: 10px;
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-form button:hover {
+    background-color: #FF1493;
+}
+
+/* Register link */
+.login-container p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-container span {
+    color: #FF69B4;
+    cursor: pointer;
+}
+
+.login-container span:hover {
+    text-decoration: underline;
 }
