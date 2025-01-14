@@ -1,4 +1,19 @@
-# MessageBoardBackend
+# MessageBoard
+
+This website allows users to send messages in a chat room. Here are the three main tabs:
+**Login Page** - where a user enters their username and password
+**Registration Page** - where a new user signs up
+**Chat Room** - where the user can send messages and see all previously sent messages
+
+![chat room](https://github.com/user-attachments/assets/f095f673-29f1-494c-a635-cc9d0740be9c)
+
+
+Here is a demo of a new user creating an account, logging in, and sending a message.
+
+
+https://github.com/user-attachments/assets/5d268ead-17ae-457d-91f9-04d59809600c
+
+
 
 This project was created using the [Ktor Project Generator](https://start.ktor.io).
 
