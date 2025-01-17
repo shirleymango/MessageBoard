@@ -75,8 +75,29 @@ async function sendMessage() {
     }
 }
 
+// Fetch the current logged-in user from the backend
+async function fetchLoggedInUser() {
+    try {
+        const response = await fetch("/current-user"); // Adjust the endpoint if necessary
+        const data = await response.json();
+
+        const userTextElement = document.getElementById("loggedInUser");
+        if (data.username) {
+            userTextElement.textContent = `Logged in as: ${data.username}`;
+        } else {
+            userTextElement.textContent = "Not logged in";
+        }
+    } catch (error) {
+        console.error("Error fetching logged-in user:", error);
+        document.getElementById("loggedInUser").textContent = "Error fetching user";
+    }
+}
+
 // Add event listener to send button
 sendButton.addEventListener("click", sendMessage);
 
 // Fetch messages when the page loads
-window.onload = fetchMessages;
+window.onload = () => {
+    fetchMessages();
+    fetchLoggedInUser();
+};
