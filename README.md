@@ -12,7 +12,7 @@ Here are the three main tabs:
 
 **3) Chat Room** - where the user can send messages and see all previously sent messages
 
-![chat room](https://github.com/user-attachments/assets/f095f673-29f1-494c-a635-cc9d0740be9c)
+![updated chat room](https://github.com/user-attachments/assets/ea9b4925-627f-4bb7-8fef-8be9d2dbdd40)
 
 ## Demo
 
